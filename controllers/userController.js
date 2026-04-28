@@ -26,4 +26,13 @@ const createUser = async (req, res, next) => {
   }
 };
 
-export { createUser };
+const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    res.status(200).json({ success: true, users });
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export { createUser, getAllUsers };
